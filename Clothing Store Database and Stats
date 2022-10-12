@@ -1,0 +1,33 @@
+-- Create Clothing Store Database
+
+CREATE TABLE Charlotte_Ruse (ID Integer PRIMARY KEY,product TEXT, Quantity INTEGER,Price INTEGER,Amount_sold Integer);
+INSERT INTO Charlotte_Ruse VALUES (1,"Shirts",50,20,5);
+INSERT INTO Charlotte_Ruse VALUES (2,"Sweaters",10,35,10);
+INSERT INTO Charlotte_Ruse VALUES (3,"Crop Top",10,20,7);
+INSERT INTO Charlotte_Ruse VALUES (4,"Pants",50,40,20);
+INSERT INTO Charlotte_Ruse VALUES (5,"skirts",15,15,12);
+INSERT INTO Charlotte_Ruse VALUES (6,"Dresses",20,35,16);
+INSERT INTO Charlotte_Ruse VALUES (7,"Hats",20,20,8);
+INSERT INTO Charlotte_Ruse VALUES (8,"Sandals",10,17,4);
+INSERT INTO Charlotte_Ruse VALUES (9,"Tennis Shoes",15,40,3);
+INSERT INTO Charlotte_Ruse VALUES (10,"Undergarments",30,5,15);
+INSERT INTO Charlotte_Ruse VALUES (11,"Socks",20,7,11);
+INSERT INTO Charlotte_Ruse VALUES (12,"Purses",10,30,2);
+INSERT INTO Charlotte_Ruse VALUES (13,"Bags",10,12,4);
+INSERT INTO Charlotte_Ruse VALUES (14,"Necklaces",10,10,1);
+INSERT INTO Charlotte_Ruse VALUES (15,"Earrings",15,5,2);
+
+
+-- display the database by quantity
+SELECT *  FROM Charlotte_Ruse
+ORDER BY Quantity;
+
+--which 5 items were the most profitable? 
+Select product, Amount_sold*Price as profit 
+from Charlotte_Ruse 
+Order by profit desc
+limit 5;
+
+--how much money was made in total?
+SELECT Sum(Amount_sold*Price) as profit 
+FROM Charlotte_Ruse;
