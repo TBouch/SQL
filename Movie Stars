@@ -1,0 +1,78 @@
+--Create movie star database
+
+Create table movie_stars (ID INTEGER PRIMARY KEY, actor TEXT, married text, married_to INTEGER);
+
+INSERT INTO movie_stars VALUES (1,"Ashton Kutcher","yes",2);
+INSERT INTO movie_stars VALUES (2, "Mila Kunis","yes",1 );
+INSERT INTO movie_stars VALUES (3, "Kaitlin Olson","yes",4 );
+INSERT INTO movie_stars VALUES (4, "Rob McElhenny","yes",3 );
+INSERT INTO movie_stars VALUES (5, "David Tennant","yes",6 );
+INSERT INTO movie_stars VALUES (6, "Georgia Moffat","yes",5);
+INSERT INTO movie_stars VALUES (7, "Ryan Reynolds","yes",8);
+INSERT INTO movie_stars VALUES (8, "Blake Lively","yes",7);
+INSERT INTO movie_stars VALUES (9, "Freddie Prinze Jr.","yes",10);
+INSERT INTO movie_stars VALUES (10,"Sara Michelle Gellar","yes",9);
+INSERT INTO movie_stars VALUES (11, "Dax Shephard","yes",12 );
+INSERT INTO movie_stars VALUES (12, "Kristen Bell","yes",11);
+INSERT INTO movie_stars VALUES (13, "Goldie Hawn","no",null );
+INSERT INTO movie_stars VALUES (14, "Kurt Russell","no",null);
+INSERT INTO movie_stars VALUES (15, "Leonardo Dicaprio","no",null);
+INSERT INTO movie_stars VALUES (16, "Keanu Reeves","no",null);
+
+--Create movie database
+
+Create table movies (ID INTEGER PRIMARY KEY, title TEXT, actor_id INTEGER); 
+INSERT INTO movies VALUES (1, "No Strings Attached", 1);
+INSERT INTO movies VALUES (2,"Friends with Benefits",2);
+INSERT INTO movies VALUES (3,"Weather Girl",3);
+INSERT INTO movies VALUES (4 ,"null",4 );
+INSERT INTO movies VALUES (5,"The Day of the Doctor",5);
+INSERT INTO movies VALUES (6,"96 Ways to Say I Love You",6);
+INSERT INTO movies VALUES (7,"Deadpool",7);
+INSERT INTO movies VALUES (8 ,"Green Lantern",7);
+INSERT INTO movies VALUES (9,"Green Lantern",8 );
+INSERT INTO movies VALUES (10,"Scooby Doo",9);
+INSERT INTO movies VALUES (11 ,"She's All That",9);
+INSERT INTO movies VALUES (12,"Scooby Doo",10);
+INSERT INTO movies VALUES (13,"The Grudge",10);
+INSERT INTO movies VALUES (14,"Chips",11);
+INSERT INTO movies VALUES (15,"Chips",12);
+INSERT INTO movies VALUES (16 ,"Frozen",12);
+INSERT INTO movies VALUES (17,"Overboard",13);
+INSERT INTO movies VALUES (18,"First Wives Club",13 );
+INSERT INTO movies VALUES (19,"Overboard",14 );
+INSERT INTO movies VALUES (20,"Sky High",14 );
+INSERT INTO movies VALUES (21,"Once Upon a Time in Hollywood",14);
+INSERT INTO movies VALUES (22,"Inception",15 );
+INSERT INTO movies VALUES (23,"Once Upon a Time in Hollywood",15);
+INSERT INTO movies VALUES (24,"The Matrix",16);
+
+
+--Which actors  are married to other actors? 
+
+
+Select m.actor, p.actor as spouse
+from movie_stars as m 
+left outer join movie_stars as p 
+on p.married_to = m.id where p.married_to is not null;
+
+
+--What are all the movies listed for each actor?
+
+
+Select movie_stars.actor, movies.title 
+from movie_stars 
+inner join movies 
+on movie_stars.id = movies.actor_id
+order by movie_stars.actor;
+
+
+-- Which movies are listed for Goldie Hawn and Kurt Russell? 
+
+Select movie_stars.actor, movies.title 
+from movie_stars
+inner join movies
+on movie_stars.id = movies.actor_id 
+Group by movies.id
+Having  actor = "Kurt Russell" or  actor = "Goldie Hawn";
+
