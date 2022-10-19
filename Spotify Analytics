@@ -17,3 +17,13 @@ order by popularity desc
 limit 10;
 
 
+4. What is the average valence for the 10 most popular songs and what key was it was in?  
+Select  track_name, AVG(valence), key 
+from BIT_DB.Spotifydata
+Group by artist_name
+order by popularity desc
+limit 10;
+
+
+
+
