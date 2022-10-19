@@ -17,7 +17,7 @@ order by popularity desc
 limit 10;
 
 
-4. What is the average valence for the 10 most popular songs and what key was it was in?  
+#4. What is the average valence for the 10 most popular songs and what key was it was in?  
 Select  track_name, AVG(valence), key 
 from BIT_DB.Spotifydata
 Group by artist_name
@@ -25,5 +25,17 @@ order by popularity desc
 limit 10;
 
 
+#5. Which songs had a popularity greater than 90 and what was the tempo for those songs? 
+Select track_name, tempo
+from BIT_DB.Spotifydata
+group by artist_name 
+having popularity > 90
+order by popularity;
 
+
+#6. What are the top 10 least popular songs and what was its duration in minutes?
+Select track_name, duration_ms/60000.00 minutes 
+from BIT_DB.Spotifydata
+order by popularity asc
+limit 10;
 
