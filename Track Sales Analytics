@@ -1,4 +1,4 @@
-Which artist and song had the most revenue? 
+--Which artist and song had the most revenue? 
 
 Select a.Name , t.name ,Round( Sum(it.TrackId)*it.UnitPrice) as revenue 
 from chinook.artists a 
@@ -13,3 +13,20 @@ on t.TrackID = it.TrackID
 
 Group by a.Name 
 Order by revenue desc; 
+
+
+
+--What are the songs listed under the playlist TV Shows? 
+
+Select t.Name 
+from chinook.playlists p
+left join chinook.playlist_track pt 
+on p.PlaylistId = pt.PlaylistId 
+
+Join chinook.tracks t
+on t.TrackId = pt.TrackId
+
+where p.Name = 'TV Shows';
+
+
+
