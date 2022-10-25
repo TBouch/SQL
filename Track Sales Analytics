@@ -1,0 +1,15 @@
+Which artist and song had the most revenue? 
+
+Select a.Name , t.name ,Round( Sum(it.TrackId)*it.UnitPrice) as revenue 
+from chinook.artists a 
+left join chinook.albums al
+on a.ArtistId = al.Artistid
+
+join chinook.tracks t 
+on al.AlbumID = t.AlbumID
+
+join chinook.invoice_items it 
+on t.TrackID = it.TrackID
+
+Group by a.Name 
+Order by revenue desc; 
