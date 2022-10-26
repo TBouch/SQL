@@ -42,3 +42,15 @@ from chinook.invoices
 Group by year; 
 
 
+--Show all the Sales Support Agents and who they report to 
+
+Select e.FirstName, e.LastName , m.FirstName, m.LastName
+from chinook.employees e
+Left outer join chinook.employees m
+on e.ReportsTo = m.EmployeeId
+Where e.Title = 'Sales Support Agent';
+
+
+
+
+
