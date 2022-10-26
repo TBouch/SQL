@@ -28,5 +28,17 @@ on t.TrackId = pt.TrackId
 
 where p.Name = 'TV Shows';
 
+-- What were the total sales by year between the years of 2009 and 2012? 
+
+Select Round(Sum(total)) as total_by_year, 
+Case
+when InvoiceDate  BETWEEN '2009-01-01' AND '2009-12-31' then 2009
+when InvoiceDate Between '2010-01-01' AND '2010-12-31' then 2010
+when InvoiceDate Between '2011-01-01' AND '2011-12-31' then 2011
+when InvoiceDate Between '2012-01-01' AND '2012-12-31' then 2012
+Else 'after_period'
+end as 'year'
+from chinook.invoices
+Group by year; 
 
 
