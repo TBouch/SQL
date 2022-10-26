@@ -28,7 +28,7 @@ on t.TrackId = pt.TrackId
 
 where p.Name = 'TV Shows';
 
--- What were the total sales by year between the years of 2009 and 2012? 
+-- What was the amount invoiced out for each year between the years of 2009 and 2012? 
 
 Select Round(Sum(total)) as total_by_year, 
 Case
