@@ -28,6 +28,15 @@ on t.TrackId = pt.TrackId
 
 where p.Name = 'TV Shows';
 
+
+-- List each country and the total sales that have been made per country  
+
+Select Distinct BillingCountry , Round(SUM(Total),2) as sales
+from chinook.invoices
+Group by BillingCountry
+order by sales desc;
+
+
 -- What was the amount of sales made for each year between the years of 2009 and 2012? 
 
 Select Round(Sum(total),2) as total_by_year, 
@@ -51,7 +60,7 @@ on e.ReportsTo = m.EmployeeId
 Where e.Title = 'Sales Support Agent';
 
 
--- What were the total sales made by each agent? Order by the highest dollar amount made  
+-- What were the total sales made by each agent? Order by the highest dollar amount made ?
 
 Select e.FirstName, e.LastName, Round(SUM(total),2) as sales_made
 
