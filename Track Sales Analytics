@@ -30,7 +30,7 @@ where p.Name = 'TV Shows';
 
 -- What was the amount of sales made for each year between the years of 2009 and 2012? 
 
-Select Round(Sum(total)) as total_by_year, 
+Select Round(Sum(total),2) as total_by_year, 
 Case
 when InvoiceDate  BETWEEN '2009-01-01' AND '2009-12-31' then 2009
 when InvoiceDate Between '2010-01-01' AND '2010-12-31' then 2010
