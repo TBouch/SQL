@@ -22,7 +22,7 @@ INSERT INTO Charlotte_Ruse VALUES (15,"Earrings",15,5,2);
 SELECT *  FROM Charlotte_Ruse
 ORDER BY Quantity;
 
---Which 5 items were the most profitable? 
+--Which 5 products were the most profitable? 
 Select product, Amount_sold*Price as profit 
 from Charlotte_Ruse 
 Order by profit desc
