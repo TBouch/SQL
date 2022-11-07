@@ -26,26 +26,26 @@ time_signature integer NOT NULL
 
 
 
-#1. What is the average danceability by artist and track?
+-- What is the average danceability by artist and track?
 SELECT artist_name, track_name, AVG(danceability) 
 FROM BIT_DB.Spotifydata
 Group by artist_name, track_name
 Order by AVG(danceability)desc;
   
-#2. Who are the top 10 artists based on popularity?
+-- Who are the top 10 artists based on popularity?
 Select artist_name
 from BIT_DB.Spotifydata
 order by popularity desc
 limit 10;
 
-#3. What's the average danceability for the 10 most popular songs?
+-- What's the average danceability for the 10 most popular songs?
 Select AVG(danceability)
 from BIT_DB.Spotifydata
 order by popularity desc
 limit 10;
 
 
-#4. What is the average valence for the 10 most popular songs and what key was it was in?  
+-- What is the average valence for the 10 most popular songs and what key was it was in?  
 Select  track_name, AVG(valence), key 
 from BIT_DB.Spotifydata
 Group by artist_name
@@ -53,7 +53,7 @@ order by popularity desc
 limit 10;
 
 
-#5. Which songs had a popularity greater than 90 and what was the tempo for those songs? 
+-- Which songs had a popularity greater than 90 and what was the tempo for those songs? 
 Select track_name, tempo
 from BIT_DB.Spotifydata
 group by artist_name 
@@ -61,7 +61,7 @@ having popularity > 90
 order by popularity;
 
 
-#6. What are the top 10 least popular songs and what was its duration in minutes?
+-- What are the top 10 least popular songs and what was its duration in minutes?
 Select track_name, duration_ms/60000.00 minutes 
 from BIT_DB.Spotifydata
 order by popularity asc
