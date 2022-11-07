@@ -1,5 +1,4 @@
 --Which artist and song had the most revenue? 
-
 Select a.Name , t.name ,Round( Sum(it.TrackId)*it.UnitPrice) as revenue 
 from chinook.artists a 
 left join chinook.albums al
@@ -10,14 +9,12 @@ on al.AlbumID = t.AlbumID
 
 join chinook.invoice_items it 
 on t.TrackID = it.TrackID
-
 Group by a.Name 
 Order by revenue desc; 
 
 
 
 --What are the songs listed under the playlist TV Shows? 
-
 Select t.Name 
 from chinook.playlists p
 left join chinook.playlist_track pt 
@@ -25,20 +22,19 @@ on p.PlaylistId = pt.PlaylistId
 
 Join chinook.tracks t
 on t.TrackId = pt.TrackId
-
 where p.Name = 'TV Shows';
 
 
--- List each country and the total sales that have been made per country  
 
+-- List each country and the total sales that have been made per country  
 Select Distinct BillingCountry , Round(SUM(Total),2) as sales
 from chinook.invoices
 Group by BillingCountry
 order by sales desc;
 
 
--- What was the amount of sales made for each year between the years of 2009 and 2012? 
 
+-- What was the amount of sales made for each year between the years of 2009 and 2012? 
 Select Round(Sum(total),2) as total_by_year, 
 Case
 when InvoiceDate  BETWEEN '2009-01-01' AND '2009-12-31' then 2009
@@ -51,8 +47,8 @@ from chinook.invoices
 Group by year; 
 
 
---Show all the Sales Support Agents and who they report to 
 
+--Show all the Sales Support Agents and who they report to 
 Select e.FirstName, e.LastName , m.FirstName, m.LastName
 from chinook.employees e
 Left outer join chinook.employees m
@@ -60,17 +56,15 @@ on e.ReportsTo = m.EmployeeId
 Where e.Title = 'Sales Support Agent';
 
 
--- What were the total sales made by each agent? Order by the highest dollar amount made ?
 
+-- What were the total sales made by each agent? Order by the highest dollar amount made?
 Select e.FirstName, e.LastName, Round(SUM(total),2) as sales_made
-
 from chinook.employees e 
 join chinook.customers c 
 on c.SupportRepId = e.EmployeeId 
 
 join chinook.invoices i
 on c.CustomerId = i.CustomerId
-
 Where e.Title = 'Sales Support Agent'
 Group by e.FirstName, e.LastName
 Order by sales_made desc;
