@@ -49,8 +49,6 @@ INSERT INTO movies VALUES (24,"The Matrix",16);
 
 
 --Which actors  are married to other actors? 
-
-
 Select m.actor, p.actor as spouse
 from movie_stars as m 
 left outer join movie_stars as p 
@@ -58,8 +56,6 @@ on p.married_to = m.id where p.married_to is not null;
 
 
 --What are all the movies listed for each actor?
-
-
 Select movie_stars.actor, movies.title 
 from movie_stars 
 inner join movies 
@@ -68,7 +64,6 @@ order by movie_stars.actor;
 
 
 -- Which movies are listed for Goldie Hawn and Kurt Russell? 
-
 Select movie_stars.actor, movies.title 
 from movie_stars
 inner join movies
