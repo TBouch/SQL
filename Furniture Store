@@ -119,19 +119,19 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 
 
 
---what was the average ,maximun ,and minium purchase amounts?
+--What was the average ,maximun ,and minium purchase amounts?
 Select AVG(price), Max(price), Min(price) 
 from sales;
 
 
---what was the payment method used and the average price per payment method over 1200?
+--What was the payment method used and the average price per payment method over 1200?
 Select payment_type, Round (AVG (price)) as avg_price 
 from sales
 Group by payment_type 
 having price >=1200;
 
 
---how many purchases where there based on size? 
+--How many purchases where there based on size? 
 Select count(product) as purchase_number,
 Case when price <=1200 then 'small_purchase' 
 when price <= 4000 then 'medium_purchase' 
@@ -140,7 +140,7 @@ End as purchase_size
 from sales
 Group by price;
 
---what is all of the available information for anyone who made a purchase over 1200 and used a mastercard?
+--What is all of the available information for anyone who made a purchase over 1200 and used a mastercard?
 Select * from sales 
 Where price >1200 
 and payment_type = 'Mastercard';
