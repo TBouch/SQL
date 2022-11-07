@@ -18,16 +18,16 @@ INSERT INTO Charlotte_Ruse VALUES (14,"Necklaces",10,10,1);
 INSERT INTO Charlotte_Ruse VALUES (15,"Earrings",15,5,2);
 
 
--- display the database by quantity
+-- Display the database by quantity
 SELECT *  FROM Charlotte_Ruse
 ORDER BY Quantity;
 
---which 5 items were the most profitable? 
+--Which 5 items were the most profitable? 
 Select product, Amount_sold*Price as profit 
 from Charlotte_Ruse 
 Order by profit desc
 limit 5;
 
---how much money was made in total?
+--How much money was made in total?
 SELECT Sum(Amount_sold*Price) as profit 
 FROM Charlotte_Ruse;
